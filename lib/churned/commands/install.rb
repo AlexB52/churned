@@ -11,13 +11,11 @@ module Churned
 
       def execute(input: $stdin, output: $stdout)
         generator.create_dir(".churned")
-
+        generator.remove_file ".churned/database"
+        ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ".churned/database")
         ActiveRecord::Schema.define do
-          create_table :posts, force: true do |t|
-          end
-
-          create_table :comments, force: true do |t|
-            t.integer :post_id
+          create_table :commits, force: true do |t|
+            t.string :hash
           end
         end
       end
