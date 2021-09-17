@@ -51,4 +51,5 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "tty-tree", "~> 0.3"
   # spec.add_dependency "tty-which", "~> 0.4"
 
+  spec.add_development_dependency "byebug"
 end

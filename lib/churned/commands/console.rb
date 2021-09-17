@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../command'
-require "byebug"
+
 module Churned
   module Commands
     class Console < Churned::Command
