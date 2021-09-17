@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord",  "~> 6.1"
   spec.add_dependency "sqlite3"
   spec.add_dependency "thor"
+  spec.add_dependency "pry"
   # spec.add_dependency "tty-box", "~> 0.4.1"
   # spec.add_dependency "tty-color", "~> 0.5"
   spec.add_dependency "tty-command", "~> 0.9.0"
