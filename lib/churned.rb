@@ -7,6 +7,11 @@ ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ".churned/
 
 module Churned
   class Commit < ActiveRecord::Base
+    has_many :file_changes
+  end
+
+  class FileChange < ActiveRecord::Base
+    belongs_to :commit
   end
 
   class Error < StandardError; end
