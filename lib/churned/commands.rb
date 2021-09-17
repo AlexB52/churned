@@ -13,7 +13,7 @@ module Churned
       case options[0]
       when "install"
         Install.new
-      end.parse(options)
+      end&.parse(options)
     end
   end
 end
