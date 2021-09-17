@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+# require 'churn-stats'
+
+unless Dir.exists?(".churn-stats")
+  Dir.mkdir(".churn-stats", 775)
+end
