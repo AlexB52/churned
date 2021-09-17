@@ -25,7 +25,7 @@ module Churned
     # @api public
     def command(**options)
       require 'tty-command'
-      TTY::Command.new(options)
+      TTY::Command.new(**options)
     end
 
     # The cursor movement
@@ -65,7 +65,7 @@ module Churned
     # @api public
     def pager(**options)
       require 'tty-pager'
-      TTY::Pager.new(options)
+      TTY::Pager.new(**options)
     end
 
     # Terminal platform and OS properties
@@ -85,7 +85,7 @@ module Churned
     # @api public
     def prompt(**options)
       require 'tty-prompt'
-      TTY::Prompt.new(options)
+      TTY::Prompt.new(**options)
     end
 
     # Get terminal screen properties
