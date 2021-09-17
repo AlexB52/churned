@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
+require "byebug"
 require "churned"
 
 command = Churned::Commands.for(ARGV)

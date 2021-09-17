@@ -1,4 +1,6 @@
 require "churned/version"
+require "churned/commands"
+require "churned/install"
 
 module Churned
   class Error < StandardError; end
