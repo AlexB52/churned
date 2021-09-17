@@ -32,14 +32,14 @@ module Churned
         command.run("git log --no-merges --pretty=format:'%H%n%ae' --numstat --since=1.years > .churned/hashes.txt")
 
         IO.read('.churned/hashes.txt').split("\n\n") do |description|
-          lines = description.split
+          lines = description.split("\n")
 
           sha    = lines.shift
           author = lines.shift
           commit = Commit.new(sha: sha, author: author)
 
-          lines.each_slice(3) do |array|
-            additions, deletions, pathname = array
+          lines.each do |numstat|
+            additions, deletions, pathname = numstat.split("\t")
             commit.file_changes.build(additions: additions, deletions: deletions, pathname: pathname)
           end
 
