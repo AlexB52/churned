@@ -18,7 +18,7 @@ module Churned
     end
     map %w(--version -v) => :version
 
-    desc 'install', 'Command description...'
+    desc 'install', 'Creates the \'.churned\' working directory'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
     def install(*)

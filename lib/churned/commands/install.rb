@@ -10,8 +10,7 @@ module Churned
       end
 
       def execute(input: $stdin, output: $stdout)
-        # Command logic goes here ...
-        output.puts "OK"
+        generator.create_dir(".churned")
       end
     end
   end
