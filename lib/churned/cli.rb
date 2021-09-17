@@ -18,6 +18,18 @@ module Churned
     end
     map %w(--version -v) => :version
 
+    desc 'console', 'Command description...'
+    method_option :help, aliases: '-h', type: :boolean,
+                         desc: 'Display usage information'
+    def console(*)
+      if options[:help]
+        invoke :help, ['console']
+      else
+        require_relative 'commands/console'
+        Churned::Commands::Console.new(options).execute
+      end
+    end
+
     desc 'install', 'Creates the \'.churned\' working directory'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
