@@ -17,5 +17,17 @@ module Churned
       puts "v#{Churned::VERSION}"
     end
     map %w(--version -v) => :version
+
+    desc 'install', 'Creates the \'.churned\' working directory'
+    method_option :help, aliases: '-h', type: :boolean,
+                         desc: 'Display usage information'
+    def install(*)
+      if options[:help]
+        invoke :help, ['install']
+      else
+        require_relative 'commands/install'
+        Churned::Commands::Install.new(options).execute
+      end
+    end
   end
 end
