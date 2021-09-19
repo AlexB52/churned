@@ -19,6 +19,7 @@ module Churned
           create_table :commits, force: true do |t|
             t.string :sha
             t.string :author
+            t.date :author_date
           end
 
           create_table :file_changes, force: true do |t|
@@ -29,14 +30,15 @@ module Churned
           end
         end
 
-        command.run("git log --no-merges --pretty=format:'%H%n%ae' --numstat --since=1.years > .churned/hashes.txt")
+        command.run("git log --no-merges --pretty=format:'%H%n%ad%n%ae' --numstat --since=1.years > .churned/hashes.txt")
 
         IO.read('.churned/hashes.txt').split("\n\n") do |description|
           lines = description.split("\n")
 
           sha    = lines.shift
+          date   = lines.shift
           author = lines.shift
-          commit = Commit.new(sha: sha, author: author)
+          commit = Commit.new(sha: sha, author_date: date, author: author)
 
           lines.each do |numstat|
             additions, deletions, pathname = numstat.split("\t")
