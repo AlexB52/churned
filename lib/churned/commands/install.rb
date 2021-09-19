@@ -32,7 +32,7 @@ module Churned
 
         command.run("git log --no-merges --pretty=format:'%H%n%ad%n%ae' --numstat --since=1.years > .churned/hashes.txt")
 
-        IO.read('.churned/hashes.txt').split("\n\n") do |description|
+        IO.read('.churned/hashes.txt').split("\n\n").each do |description|
           lines = description.split("\n")
 
           sha    = lines.shift
