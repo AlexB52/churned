@@ -27,8 +27,8 @@ module Churned
             create_table :file_changes, force: true do |t|
               t.references :commit
               t.string :pathname
-              t.integer :additions
-              t.integer :deletions
+              t.integer :additions, default: 0
+              t.integer :deletions, default: 0
             end
           end
 
