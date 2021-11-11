@@ -11,7 +11,7 @@ Usage:
 Options:
   -h, [--help], [--no-help]  # Display usage information
 
-Command description...
+Open a irb session to read the database
     OUT
 
     assert_equal expected_output, output

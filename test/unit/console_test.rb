@@ -5,10 +5,8 @@ class Churned::Commands::ConsoleTest < Minitest::Test
   def test_executes_console_command_successfully
     output = StringIO.new
     options = {}
-    command = Churned::Commands::Console.new(options)
-
-    command.execute(output: output)
-
-    assert_equal "OK\n", output.string
+    out, err = capture_io do
+      Churned::Commands::Console.new(options).execute(output: output)
+    end
   end
 end

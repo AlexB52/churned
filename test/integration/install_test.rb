@@ -11,7 +11,7 @@ Usage:
 Options:
   -h, [--help], [--no-help]  # Display usage information
 
-Command description...
+Creates the '.churned' working directory
     OUT
 
     assert_equal expected_output, output

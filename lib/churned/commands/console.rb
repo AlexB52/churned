@@ -10,6 +10,7 @@ module Churned
       end
 
       def execute(input: $stdin, output: $stdout)
+        require "pry"
         Pry.start
       end
     end
