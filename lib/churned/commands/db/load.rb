@@ -10,14 +10,12 @@ module Churned
           @options = options
         end
 
-        def self.execute
-          new({}).execute(input: $stdin, output: $stdout)
+        def self.execute(filename)
+          new({}).execute(filename, input: $stdin, output: $stdout)
         end
 
-        def execute(input: $stdin, output: $stdout)
-          command.run("git log --no-merges --pretty=format:'%H%n%ad%n%ae' --numstat --since=1.years > .churned/hashes.txt")
-
-          IO.read('.churned/hashes.txt').split("\n\n").each do |description|
+        def execute(filename, input: $stdin, output: $stdout)
+          IO.read(filename).split("\n\n").each do |description|
             sha, date, author, *numstats = description.split("\n")
 
             commit = Commit.new(sha: sha, author_date: date, author: author)

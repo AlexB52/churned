@@ -13,8 +13,8 @@ module Churned
         Create.execute
       end
 
-      def load
-        Load.execute
+      def load(filename)
+        Load.execute(filename)
       end
     end
   end

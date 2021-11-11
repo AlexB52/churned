@@ -9,9 +9,10 @@ module Churned
         @options = options
       end
 
-      def execute(input: $stdin, output: $stdout)
+      def execute(filename = ".churned/hashes.txt", input: $stdin, output: $stdout)
         db.create
-        db.load
+        command.run("git log --no-merges --pretty=format:'%H%n%ad%n%ae' --numstat --since=1.years > #{filename}")
+        db.load(filename)
       end
     end
   end
