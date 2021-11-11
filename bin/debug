@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "churned"
+
+Signal.trap('INT') do
+  warn("\n#{caller.join("\n")}: interrupted")
+  exit(1)
+end
+
+begin
+  Churned::CLI.start
+rescue Churned::CLI::Error => err
+  puts "ERROR: #{err.message}"
+  exit 1
+end
