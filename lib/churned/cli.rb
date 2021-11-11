@@ -18,6 +18,9 @@ module Churned
     end
     map %w(--version -v) => :version
 
+    require_relative 'commands/db'
+    register Churned::Commands::Db, 'db', 'db [SUBCOMMAND]', 'Command description...'
+
     desc 'console', 'Open a irb session to read the database'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
@@ -26,7 +29,6 @@ module Churned
         invoke :help, ['console']
       else
         require_relative 'commands/console'
-        require 'pry'
         Churned::Commands::Console.new(options).execute
       end
     end
