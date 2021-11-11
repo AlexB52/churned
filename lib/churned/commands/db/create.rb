@@ -4,15 +4,34 @@ require_relative '../../command'
 
 module Churned
   module Commands
-    class Db
+    module DB
       class Create < Churned::Command
         def initialize(options)
           @options = options
         end
 
+        def self.execute
+          new({}).execute(input: $stdin, output: $stdout)
+        end
+
         def execute(input: $stdin, output: $stdout)
-          # Command logic goes here ...
-          output.puts "OK"
+          generator.create_dir(".churned")
+
+          ActiveRecord::Schema.define do
+            create_table :commits, force: true do |t|
+              t.string :sha
+              t.string :author
+              t.date :author_date
+            end
+
+            create_table :file_changes, force: true do |t|
+              t.references :commit
+              t.string :pathname
+              t.integer :additions
+              t.integer :deletions
+            end
+          end
+
         end
       end
     end

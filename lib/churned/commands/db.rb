@@ -1,35 +1,20 @@
 # frozen_string_literal: true
 
 require 'thor'
+require_relative 'db/load'
+require_relative 'db/create'
 
 module Churned
   module Commands
-    class Db < Thor
+    module DB
+      module_function
 
-      namespace :db
-
-      desc 'load', 'Command description...'
-      method_option :help, aliases: '-h', type: :boolean,
-                           desc: 'Display usage information'
-      def load(*)
-        if options[:help]
-          invoke :help, ['load']
-        else
-          require_relative 'db/load'
-          Churned::Commands::Db::Load.new(options).execute
-        end
+      def create
+        Create.execute
       end
 
-      desc 'create', 'Command description...'
-      method_option :help, aliases: '-h', type: :boolean,
-                           desc: 'Display usage information'
-      def create(*)
-        if options[:help]
-          invoke :help, ['create']
-        else
-          require_relative 'db/create'
-          Churned::Commands::Db::Create.new(options).execute
-        end
+      def load
+        Load.execute
       end
     end
   end

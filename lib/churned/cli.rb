@@ -18,9 +18,6 @@ module Churned
     end
     map %w(--version -v) => :version
 
-    require_relative 'commands/db'
-    register Churned::Commands::Db, 'db', 'db [SUBCOMMAND]', 'Command description...'
-
     desc 'console', 'Open a irb session to read the database'
     method_option :help, aliases: '-h', type: :boolean,
                          desc: 'Display usage information'
