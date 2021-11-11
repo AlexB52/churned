@@ -26,7 +26,6 @@ module Churned
         invoke :help, ['console']
       else
         require_relative 'commands/console'
-        require 'pry'
         Churned::Commands::Console.new(options).execute
       end
     end

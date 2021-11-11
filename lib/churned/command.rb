@@ -18,6 +18,11 @@ module Churned
       )
     end
 
+    def db
+      require_relative 'commands/db'
+      Commands::DB
+    end
+
     # The external commands runner
     #
     # @see http://www.rubydoc.info/gems/tty-command
