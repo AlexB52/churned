@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+ENV["TTY_ENV"] = "development"
 require "bundler/setup"
 require "churned"
 
